@@ -1,19 +1,24 @@
 const express = require('express');
-require('dotenv').config();
-
+const mongoose = require('mongoose');
+const formRoutes = require('./routes/formRoutes');
+const teamRoutes = require('./routes/teamRoutes');
+const config = require('./config/config');
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Middleware to parse JSON bodies
+const connectDB = require('./config/db');
+// Middleware
 app.use(express.json());
 
-// Sample route
-app.get('/', (req, res) => {
-    console.log(req.body)
-    res.status(200).send('Hey, welcome to the backend service of CyberVault');
-});
+connectDB();
+// Routes
+app.get('/',(req,res,next)=>{
+    console.log(req.header);
+    res.send("Welcome to Cyber Vault!!")
+})
+app.use('/api/forms', formRoutes);
+app.use('/api/teams', teamRoutes);
 
 // Start the server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

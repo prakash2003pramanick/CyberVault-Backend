@@ -1,0 +1,28 @@
+How to run ?
+Developement environment -    npm run dev
+Production environment   -    npm run start
+
+
+If you are a developer, follow these steps
+
+install docker in your system
+
+Build the docker image using the command
+    docker build -t cybervault .
+Run the docker image in interactive mode
+    docker run cybervault
+
+Test the backend service.
+
+How to log?
+User the Logger class in the utils to log anything in the terminal.
+
+How to throw errors?
+use the custom error class in utils and the middleware to thow errors.
+
+
+Folder structure :
+The config folder contains all the configuration files 
+The controllers manage all the functionalities of the api calls 
+The routers are responsible for forwarding the request to the correcdt controllers 
+
